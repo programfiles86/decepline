@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS Style Switches</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f5;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin: 20px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            outline: none; /* Remove blue outline */
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose carefully</h1>
+        <div class="emoji">♥️</div>
+        <div class="switch">
+            <input type="checkbox" id="switch1">
+            <label for="switch1" class="slider"></label>
+        </div>
+        <div class="emoji">🧠</div>
+        <div class="switch">
+            <input type="checkbox" id="switch2">
+            <label for="switch2" class="slider"></label>
+        </div>
+    </div>
+    <script>
+        const switch1 = document.getElementById('switch1');
+        const switch2 = document.getElementById('switch2');
+
+        switch1.addEventListener('change', function() {
+            if (this.checked) {
+                switch2.checked = false;
+            }
+        });
+
+        switch2.addEventListener('change', function() {
+            if (this.checked) {
+                switch1.checked = false;
+            }
+        });
+    </script>
+</body>
+</html>
